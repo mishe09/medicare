@@ -1,0 +1,14 @@
+/* Apply whitesmoke background to the whole app */
+body, html, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: whitesmoke;
+}
+
+/* Optional: make sure text is easy to read */
+* {
+  box-sizing: border-box;
+}
+
