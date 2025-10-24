@@ -1,6 +1,7 @@
 import Navbar from "../Components/Client-compoents/Navbar/Navbar";
 import Sidebar from "../Components/Client-compoents/Sidebar/Sidebar";
 import MobileSidebar from "../Components/Client-compoents/Sidebar/MobileSidebar";
+import { Outlet } from "react-router-dom";
 
 export default function ClientLayout({
   children,

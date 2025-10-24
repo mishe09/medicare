@@ -12,6 +12,7 @@ import {
   ChevronUp,
 } from "lucide-react";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export default function AdminMobileSidebar({ expanded, setExpanded, darkMode }) {
   const [active, setActive] = useState("Dashboard");
@@ -69,8 +70,9 @@ export default function AdminMobileSidebar({ expanded, setExpanded, darkMode }) 
                 : "hover:bg-gray-100 text-gray-600"
             }`}
           >
-            <LayoutDashboard size={20} />
+        <LayoutDashboard size={20} />
             <span>Dashboard</span>
+            
           </li>
 
           {/* Patients */}

@@ -7,6 +7,13 @@ body, html, #root {
   background-color: whitesmoke;
 }
 
+a {
+  color: inherit !important;
+  text-decoration: none !important;
+   font-weight: 400 !important; 
+}
+
+
 /* Optional: make sure text is easy to read */
 * {
   box-sizing: border-box;

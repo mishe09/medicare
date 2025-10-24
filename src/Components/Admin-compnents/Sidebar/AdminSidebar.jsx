@@ -9,6 +9,7 @@ import {
   ChevronUp
 } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function AdminSidebar({ expanded, setExpanded, darkMode }) {
   const [active, setActive] = useState("Dashboard");
@@ -24,7 +25,7 @@ export default function AdminSidebar({ expanded, setExpanded, darkMode }) {
       ...prev,
       [menu]: !prev[menu],
     }));
-    setActive(menu); // highlight parent when toggled
+    setActive(menu);
   };
 
   const isActiveParent = (menu) => active === menu || active.startsWith(menu + "-");
@@ -73,7 +74,11 @@ export default function AdminSidebar({ expanded, setExpanded, darkMode }) {
             }`}
           >
             <LayoutDashboard size={20} />
-            {expanded && <span>Dashboard</span>}
+            {expanded && (
+              <Link to="/dashboard">
+                <span>Dashboard</span>
+              </Link>
+            )}
           </li>
 
           {/* Patients */}
@@ -104,18 +109,20 @@ export default function AdminSidebar({ expanded, setExpanded, darkMode }) {
                 {["List", "Details", "Add", "Edit"].map((sub) => {
                   const key = `Paitents-${sub}`;
                   return (
-                    <li
-                      key={key}
-                      onClick={() => setActive(key)}
-                      className={`cursor-pointer px-2 py-1 rounded-md ${
-                        active === key
-                          ? "bg-[rgba(213,151,71,0.2)] text-[rgb(213,151,71)] font-semibold"
-                          : darkMode
-                          ? "hover:bg-gray-700 text-gray-200"
-                          : "hover:bg-gray-100 text-gray-600"
-                      }`}
-                    >
-                      {sub}
+                    <li key={key}>
+                      <Link
+                        to={`/admin/patients/${sub.toLowerCase()}`}
+                        onClick={() => setActive(key)}
+                        className={`block px-2 py-1 rounded-md ${
+                          active === key
+                            ? "bg-[rgba(213,151,71,0.2)] text-[rgb(213,151,71)] font-semibold"
+                            : darkMode
+                            ? "hover:bg-gray-700 text-gray-200"
+                            : "hover:bg-gray-100 text-gray-600"
+                        }`}
+                      >
+                        {sub}
+                      </Link>
                     </li>
                   );
                 })}
@@ -151,18 +158,20 @@ export default function AdminSidebar({ expanded, setExpanded, darkMode }) {
                 {["List", "Details", "Add", "Edit"].map((sub) => {
                   const key = `Doctors-${sub}`;
                   return (
-                    <li
-                      key={key}
-                      onClick={() => setActive(key)}
-                      className={`cursor-pointer px-2 py-1 rounded-md ${
-                        active === key
-                          ? "bg-[rgba(213,151,71,0.2)] text-[rgb(213,151,71)] font-semibold"
-                          : darkMode
-                          ? "hover:bg-gray-700 text-gray-200"
-                          : "hover:bg-gray-100 text-gray-600"
-                      }`}
-                    >
-                      {sub}
+                    <li key={key}>
+                      <Link
+                        to={`/admin/doctors/${sub.toLowerCase()}`}
+                        onClick={() => setActive(key)}
+                        className={`block px-2 py-1 rounded-md ${
+                          active === key
+                            ? "bg-[rgba(213,151,71,0.2)] text-[rgb(213,151,71)] font-semibold"
+                            : darkMode
+                            ? "hover:bg-gray-700 text-gray-200"
+                            : "hover:bg-gray-100 text-gray-600"
+                        }`}
+                      >
+                        {sub}
+                      </Link>
                     </li>
                   );
                 })}
@@ -198,18 +207,20 @@ export default function AdminSidebar({ expanded, setExpanded, darkMode }) {
                 {["List", "Schedule", "Add", "Edit"].map((sub) => {
                   const key = `Appointments-${sub}`;
                   return (
-                    <li
-                      key={key}
-                      onClick={() => setActive(key)}
-                      className={`cursor-pointer px-2 py-1 rounded-md ${
-                        active === key
-                          ? "bg-[rgba(213,151,71,0.2)] text-[rgb(213,151,71)] font-semibold"
-                          : darkMode
-                          ? "hover:bg-gray-700 text-gray-200"
-                          : "hover:bg-gray-100 text-gray-600"
-                      }`}
-                    >
-                      {sub}
+                    <li key={key}>
+                      <Link
+                        to={`/admin/appointments/${sub.toLowerCase()}`}
+                        onClick={() => setActive(key)}
+                        className={`block px-2 py-1 rounded-md ${
+                          active === key
+                            ? "bg-[rgba(213,151,71,0.2)] text-[rgb(213,151,71)] font-semibold"
+                            : darkMode
+                            ? "hover:bg-gray-700 text-gray-200"
+                            : "hover:bg-gray-100 text-gray-600"
+                        }`}
+                      >
+                        {sub}
+                      </Link>
                     </li>
                   );
                 })}
@@ -229,7 +240,11 @@ export default function AdminSidebar({ expanded, setExpanded, darkMode }) {
             }`}
           >
             <Wallet size={20} />
-            {expanded && <span>Wallet</span>}
+            {expanded && (
+              <Link to="/admin/wallet">
+                <span>Wallet</span>
+              </Link>
+            )}
           </li>
 
           {/* Settings */}
@@ -244,7 +259,11 @@ export default function AdminSidebar({ expanded, setExpanded, darkMode }) {
             }`}
           >
             <Settings size={20} />
-            {expanded && <span>Settings</span>}
+            {expanded && (
+              <Link to="/admin/settings">
+                <span>Settings</span>
+              </Link>
+            )}
           </li>
         </ul>
 
@@ -272,8 +291,7 @@ export default function AdminSidebar({ expanded, setExpanded, darkMode }) {
                 />
                 {showProfileMenu && (
                   <div
-                    className={`absolute right-0 bottom-full mb-2 w-24 rounded-md shadow-lg z-50
-                    ${
+                    className={`absolute right-0 bottom-full mb-2 w-24 rounded-md shadow-lg z-50 ${
                       darkMode
                         ? "bg-gray-700 text-white"
                         : "bg-white text-[rgb(213,151,71)]"
