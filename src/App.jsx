@@ -1,8 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Login from "./Pages/Login/Login";
-
-
+import Register from "./Pages/Register/Register"
 
 
 // client-imports
@@ -55,6 +54,7 @@ export default function App() {
       <Routes>
         {/* 🔑 Login */}
         <Route path="/" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
 
         {/* 👤 Client pages */}
         <Route
@@ -66,7 +66,6 @@ export default function App() {
               darkMode={darkMode}
               setDarkMode={setDarkMode}
             >
-
 
               <div
                 style={{
@@ -84,7 +83,7 @@ export default function App() {
           }
         />
 
-         <Route
+        <Route
           path="/Appointmentbooking"
           element={
             <ClientLayout
@@ -93,7 +92,6 @@ export default function App() {
               darkMode={darkMode}
               setDarkMode={setDarkMode}
             >
-
 
               <div
                 style={{
@@ -109,7 +107,7 @@ export default function App() {
             </ClientLayout>
           }
         />
-         <Route
+        <Route
           path="/Appointmentediting"
           element={
             <ClientLayout
@@ -118,7 +116,6 @@ export default function App() {
               darkMode={darkMode}
               setDarkMode={setDarkMode}
             >
-
 
               <div
                 style={{
@@ -135,7 +132,7 @@ export default function App() {
           }
         />
 
-         <Route
+        <Route
           path="/Pharmacylisting"
           element={
             <ClientLayout
@@ -144,7 +141,6 @@ export default function App() {
               darkMode={darkMode}
               setDarkMode={setDarkMode}
             >
-
 
               <div
                 style={{
@@ -160,7 +156,7 @@ export default function App() {
             </ClientLayout>
           }
         />
-         <Route
+        <Route
           path="/Pharmacydetailing"
           element={
             <ClientLayout
@@ -169,7 +165,6 @@ export default function App() {
               darkMode={darkMode}
               setDarkMode={setDarkMode}
             >
-
 
               <div
                 style={{
@@ -186,7 +181,7 @@ export default function App() {
           }
         />
 
-         <Route
+        <Route
           path="/Pharmacycart"
           element={
             <ClientLayout
@@ -195,7 +190,6 @@ export default function App() {
               darkMode={darkMode}
               setDarkMode={setDarkMode}
             >
-
 
               <div
                 style={{
@@ -212,7 +206,7 @@ export default function App() {
           }
         />
 
-         <Route
+        <Route
           path="/Pharmacycheckingout"
           element={
             <ClientLayout
@@ -221,7 +215,6 @@ export default function App() {
               darkMode={darkMode}
               setDarkMode={setDarkMode}
             >
-
 
               <div
                 style={{
@@ -238,7 +231,7 @@ export default function App() {
           }
         />
 
-         <Route
+        <Route
           path="/Chat"
           element={
             <ClientLayout
@@ -247,8 +240,6 @@ export default function App() {
               darkMode={darkMode}
               setDarkMode={setDarkMode}
             >
-
-
               <div
                 style={{
                   transform: "scale(0.75)",
@@ -274,10 +265,7 @@ export default function App() {
               darkMode={darkMode}
               setDarkMode={setDarkMode}
             >
-
-        
-
-<div
+              <div
                 style={{
                   transform: "scale(0.75)",
                   transformOrigin: "top center",
@@ -286,7 +274,7 @@ export default function App() {
                   marginRight: "-15.6%",
                 }}
               >
-              <Dashboard darkMode={darkMode} setDarkMode={setDarkMode} />
+                <Dashboard darkMode={darkMode} setDarkMode={setDarkMode} />
               </div>
             </AdminLayout>
           }
@@ -297,14 +285,25 @@ export default function App() {
           path="/admin/patients/list"
           element={
             <AdminLayout {...{ expanded, setExpanded, darkMode, setDarkMode }}>
-              <PaitentList darkMode={darkMode} setDarkMode={setDarkMode} />
+
+              <div
+                style={{
+                  transform: "scale(0.75)",
+                  transformOrigin: "top center",
+                  width: "133.33%",
+                  marginLeft: "-16.6%",
+                  marginRight: "-15.6%",
+                }}
+              >
+                <PaitentList darkMode={darkMode} setDarkMode={setDarkMode} />
+              </div>
             </AdminLayout>
+
           }
         />
 
-
         <Route
-          path="/admin/patients/details"
+          path="/admin/patients/details/:id"
           element={
             <AdminLayout {...{ expanded, setExpanded, darkMode, setDarkMode }}>
 
@@ -317,23 +316,17 @@ export default function App() {
                   marginRight: "-15.6%",
                 }}
               >
-              <PatientDetails darkMode={darkMode} setDarkMode={setDarkMode} />
+                <PatientDetails darkMode={darkMode} setDarkMode={setDarkMode} />
               </div>
             </AdminLayout>
           }
         />
+
+        
         <Route
           path="/admin/patients/add"
           element={
             <AdminLayout {...{ expanded, setExpanded, darkMode, setDarkMode }}>
-              <PatientAdd darkMode={darkMode} setDarkMode={setDarkMode} />
-            </AdminLayout>
-          }
-        />
-        <Route
-          path="/admin/patients/edit"
-          element={
-            <AdminLayout {...{ expanded, setExpanded, darkMode, setDarkMode }}>
 
               <div
                 style={{
@@ -344,11 +337,32 @@ export default function App() {
                   marginRight: "-15.6%",
                 }}
               >
-              <PatientEdit darkMode={darkMode} setDarkMode={setDarkMode} />
+                <PatientAdd darkMode={darkMode} setDarkMode={setDarkMode} />
+              </div>
+
+            </AdminLayout>
+          }
+        />
+
+        <Route
+          path="/admin/patients/edit/:id"
+          element={
+            <AdminLayout {...{ expanded, setExpanded, darkMode, setDarkMode }}>
+              <div
+                style={{
+                  transform: "scale(0.75)",
+                  transformOrigin: "top center",
+                  width: "133.33%",
+                  marginLeft: "-16.6%",
+                  marginRight: "-15.6%",
+                }}
+              >
+                <PatientEdit darkMode={darkMode} setDarkMode={setDarkMode} />
               </div>
             </AdminLayout>
           }
         />
+
 
         {/* 👨‍⚕️ Doctors */}
         <Route
@@ -365,13 +379,14 @@ export default function App() {
                   marginRight: "-15.6%",
                 }}
               >
-              <DoctorList darkMode={darkMode} setDarkMode={setDarkMode} />
+                <DoctorList darkMode={darkMode} setDarkMode={setDarkMode} />
               </div>
+
             </AdminLayout>
           }
         />
         <Route
-          path="/admin/doctors/details"
+          path="/admin/doctors/details/:id"
           element={
             <AdminLayout {...{ expanded, setExpanded, darkMode, setDarkMode }}>
 
@@ -384,7 +399,7 @@ export default function App() {
                   marginRight: "-15.6%",
                 }}
               >
-              <DoctorDetails darkMode={darkMode} setDarkMode={setDarkMode} />
+                <DoctorDetails darkMode={darkMode} setDarkMode={setDarkMode} />
               </div>
             </AdminLayout>
           }
@@ -403,17 +418,17 @@ export default function App() {
                   marginRight: "-15.6%",
                 }}
               >
-              <DoctorAdd darkMode={darkMode} setDarkMode={setDarkMode} />
+                <DoctorAdd darkMode={darkMode} setDarkMode={setDarkMode} />
               </div>
             </AdminLayout>
           }
         />
         <Route
-          path="/admin/doctors/edit"
+          path="/admin/doctors/edit/:id"
           element={
             <AdminLayout {...{ expanded, setExpanded, darkMode, setDarkMode }}>
 
-               <div
+              <div
                 style={{
                   transform: "scale(0.75)",
                   transformOrigin: "top center",
@@ -422,7 +437,7 @@ export default function App() {
                   marginRight: "-15.6%",
                 }}
               >
-              <DoctorEdit  darkMode={darkMode} setDarkMode={setDarkMode} />
+                <DoctorEdit darkMode={darkMode} setDarkMode={setDarkMode} />
               </div>
             </AdminLayout>
           }
@@ -443,7 +458,7 @@ export default function App() {
                   marginRight: "-15.6%",
                 }}
               >
-              <AppointmentList darkMode={darkMode} setDarkMode={setDarkMode} />
+                <AppointmentList darkMode={darkMode} setDarkMode={setDarkMode} />
               </div>
             </AdminLayout>
           }
@@ -462,7 +477,7 @@ export default function App() {
                   marginRight: "-15.6%",
                 }}
               >
-              <AppointmentSchedule darkMode={darkMode} setDarkMode={setDarkMode} />
+                <AppointmentSchedule darkMode={darkMode} setDarkMode={setDarkMode} />
               </div>
             </AdminLayout>
           }
@@ -481,7 +496,7 @@ export default function App() {
                   marginRight: "-15.6%",
                 }}
               >
-              <AppointmentAdd darkMode={darkMode} setDarkMode={setDarkMode} />
+                <AppointmentAdd darkMode={darkMode} setDarkMode={setDarkMode} />
               </div>
             </AdminLayout>
           }
@@ -500,7 +515,7 @@ export default function App() {
                   marginRight: "-15.6%",
                 }}
               >
-              <AppointmentEdit darkMode={darkMode} setDarkMode={setDarkMode} />
+                <AppointmentEdit darkMode={darkMode} setDarkMode={setDarkMode} />
               </div>
             </AdminLayout>
           }
@@ -521,7 +536,7 @@ export default function App() {
                   marginRight: "-15.6%",
                 }}
               >
-              <Wallet  darkMode={darkMode} setDarkMode={setDarkMode} />
+                <Wallet darkMode={darkMode} setDarkMode={setDarkMode} />
               </div>
             </AdminLayout>
           }
@@ -542,7 +557,7 @@ export default function App() {
                   marginRight: "-15.6%",
                 }}
               >
-              <Settings />
+                <Settings darkMode={darkMode} setDarkMode={setDarkMode} />
               </div>
             </AdminLayout>
           }

@@ -26,7 +26,7 @@ export default function AdminLayout({
 
       {/* 📱 Mobile Sidebar */}
       <div className="sm:hidden">
-        <AdminMobileSidebar expanded={expanded} setExpanded={setExpanded} />
+        <AdminMobileSidebar expanded={expanded} setExpanded={setExpanded}  setDarkMode={setDarkMode} />
       </div>
 
       {/* 🌐 Main Content */}

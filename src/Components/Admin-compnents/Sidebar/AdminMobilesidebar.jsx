@@ -12,7 +12,7 @@ import {
   ChevronUp,
 } from "lucide-react";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function AdminMobileSidebar({ expanded, setExpanded, darkMode }) {
   const [active, setActive] = useState("Dashboard");
@@ -34,9 +34,8 @@ export default function AdminMobileSidebar({ expanded, setExpanded, darkMode }) 
 
   return (
     <aside
-      className={`fixed top-14 left-0 h-full w-60 m-4 shadow-sm rounded-xl z-50 transition-transform ${
-        darkMode ? "bg-gray-800 text-white" : "bg-white text-black"
-      }`}
+      className={`fixed top-14 left-0 h-full w-60 m-4 shadow-sm rounded-xl z-50 transition-transform ${darkMode ? "bg-gray-800 text-white" : "bg-white text-black"
+        }`}
     >
       <nav className="h-full flex flex-col min-h-0">
         {/* Header */}
@@ -52,9 +51,8 @@ export default function AdminMobileSidebar({ expanded, setExpanded, darkMode }) 
         {/* Sidebar Items */}
         <ul className="flex-1 px-2 space-y-2 overflow-y-auto">
           <p
-            className={`text-xs font-semibold px-3 mb-2 ${
-              darkMode ? "text-gray-300" : "text-gray-400"
-            }`}
+            className={`text-xs font-semibold px-3 mb-2 ${darkMode ? "text-gray-300" : "text-gray-400"
+              }`}
           >
             Admin Portal
           </p>
@@ -62,30 +60,30 @@ export default function AdminMobileSidebar({ expanded, setExpanded, darkMode }) 
           {/* Dashboard */}
           <li
             onClick={() => setActive("Dashboard")}
-            className={`flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer transition-colors ${
-              active === "Dashboard"
-                ? "bg-[rgba(213,151,71,0.15)] text-[rgb(213,151,71)] font-semibold"
-                : darkMode
+            className={`flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer transition-colors ${active === "Dashboard"
+              ? "bg-[rgba(213,151,71,0.15)] text-[rgb(213,151,71)] font-semibold"
+              : darkMode
                 ? "hover:bg-gray-700 text-white"
                 : "hover:bg-gray-100 text-gray-600"
-            }`}
+              }`}
           >
-        <LayoutDashboard size={20} />
-            <span>Dashboard</span>
-            
+            <LayoutDashboard size={20} />
+            <Link to="/dashboard">
+              <span>Dashboard</span>
+            </Link>
+
           </li>
 
           {/* Patients */}
           <li>
             <div
               onClick={() => toggleMenu("Patients")}
-              className={`flex items-center justify-between px-3 py-2 rounded-md cursor-pointer transition-colors ${
-                isActiveParent("Patients")
-                  ? "bg-[rgba(213,151,71,0.15)] text-[rgb(213,151,71)] font-semibold"
-                  : darkMode
+              className={`flex items-center justify-between px-3 py-2 rounded-md cursor-pointer transition-colors ${isActiveParent("Patients")
+                ? "bg-[rgba(213,151,71,0.15)] text-[rgb(213,151,71)] font-semibold"
+                : darkMode
                   ? "hover:bg-gray-700 text-white"
                   : "hover:bg-gray-100 text-gray-600"
-              }`}
+                }`}
             >
               <div className="flex items-center gap-3">
                 <Users size={20} />
@@ -98,18 +96,19 @@ export default function AdminMobileSidebar({ expanded, setExpanded, darkMode }) 
                 {["List", "Details", "Add", "Edit"].map((sub) => {
                   const key = `Patients-${sub}`;
                   return (
-                    <li
-                      key={key}
-                      onClick={() => setActive(key)}
-                      className={`cursor-pointer px-2 py-1 rounded-md ${
-                        active === key
-                          ? "bg-[rgba(213,151,71,0.2)] text-[rgb(213,151,71)] font-semibold"
-                          : darkMode
-                          ? "hover:bg-gray-700 text-gray-200"
-                          : "hover:bg-gray-100 text-gray-600"
-                      }`}
-                    >
-                      {sub}
+                    <li key={key}>
+                      <Link
+                        to={`/admin/patients/${sub.toLowerCase()}`}
+                        onClick={() => setActive(key)}
+                        className={`block px-2 py-1 rounded-md ${active === key
+                            ? "bg-[rgba(213,151,71,0.2)] text-[rgb(213,151,71)] font-semibold"
+                            : darkMode
+                              ? "hover:bg-gray-700 text-gray-200"
+                              : "hover:bg-gray-100 text-gray-600"
+                          }`}
+                      >
+                        {sub}
+                      </Link>
                     </li>
                   );
                 })}
@@ -121,13 +120,12 @@ export default function AdminMobileSidebar({ expanded, setExpanded, darkMode }) 
           <li>
             <div
               onClick={() => toggleMenu("Doctors")}
-              className={`flex items-center justify-between px-3 py-2 rounded-md cursor-pointer transition-colors ${
-                isActiveParent("Doctors")
-                  ? "bg-[rgba(213,151,71,0.15)] text-[rgb(213,151,71)] font-semibold"
-                  : darkMode
+              className={`flex items-center justify-between px-3 py-2 rounded-md cursor-pointer transition-colors ${isActiveParent("Doctors")
+                ? "bg-[rgba(213,151,71,0.15)] text-[rgb(213,151,71)] font-semibold"
+                : darkMode
                   ? "hover:bg-gray-700 text-white"
                   : "hover:bg-gray-100 text-gray-600"
-              }`}
+                }`}
             >
               <div className="flex items-center gap-3">
                 <Stethoscope size={20} />
@@ -140,18 +138,20 @@ export default function AdminMobileSidebar({ expanded, setExpanded, darkMode }) 
                 {["List", "Details", "Add", "Edit"].map((sub) => {
                   const key = `Doctors-${sub}`;
                   return (
-                    <li
-                      key={key}
-                      onClick={() => setActive(key)}
-                      className={`cursor-pointer px-2 py-1 rounded-md ${
-                        active === key
-                          ? "bg-[rgba(213,151,71,0.2)] text-[rgb(213,151,71)] font-semibold"
-                          : darkMode
-                          ? "hover:bg-gray-700 text-gray-200"
-                          : "hover:bg-gray-100 text-gray-600"
-                      }`}
-                    >
-                      {sub}
+                    <li key={key}>
+                      <Link
+                        to={`/admin/doctors/${sub.toLowerCase()}`}
+                        onClick={() => setActive(key)}
+                        className={`block px-2 py-1 rounded-md ${
+                          active === key
+                            ? "bg-[rgba(213,151,71,0.2)] text-[rgb(213,151,71)] font-semibold"
+                            : darkMode
+                            ? "hover:bg-gray-700 text-gray-200"
+                            : "hover:bg-gray-100 text-gray-600"
+                        }`}
+                      >
+                        {sub}
+                      </Link>
                     </li>
                   );
                 })}
@@ -163,13 +163,12 @@ export default function AdminMobileSidebar({ expanded, setExpanded, darkMode }) 
           <li>
             <div
               onClick={() => toggleMenu("Appointments")}
-              className={`flex items-center justify-between px-3 py-2 rounded-md cursor-pointer transition-colors ${
-                isActiveParent("Appointments")
-                  ? "bg-[rgba(213,151,71,0.15)] text-[rgb(213,151,71)] font-semibold"
-                  : darkMode
+              className={`flex items-center justify-between px-3 py-2 rounded-md cursor-pointer transition-colors ${isActiveParent("Appointments")
+                ? "bg-[rgba(213,151,71,0.15)] text-[rgb(213,151,71)] font-semibold"
+                : darkMode
                   ? "hover:bg-gray-700 text-white"
                   : "hover:bg-gray-100 text-gray-600"
-              }`}
+                }`}
             >
               <div className="flex items-center gap-3">
                 <LayoutDashboard size={20} />
@@ -182,18 +181,20 @@ export default function AdminMobileSidebar({ expanded, setExpanded, darkMode }) 
                 {["List", "Schedule", "Add", "Edit"].map((sub) => {
                   const key = `Appointments-${sub}`;
                   return (
-                    <li
-                      key={key}
-                      onClick={() => setActive(key)}
-                      className={`cursor-pointer px-2 py-1 rounded-md ${
-                        active === key
-                          ? "bg-[rgba(213,151,71,0.2)] text-[rgb(213,151,71)] font-semibold"
-                          : darkMode
-                          ? "hover:bg-gray-700 text-gray-200"
-                          : "hover:bg-gray-100 text-gray-600"
-                      }`}
-                    >
-                      {sub}
+                    <li key={key}>
+                      <Link
+                        to={`/admin/appointments/${sub.toLowerCase()}`}
+                        onClick={() => setActive(key)}
+                        className={`block px-2 py-1 rounded-md ${
+                          active === key
+                            ? "bg-[rgba(213,151,71,0.2)] text-[rgb(213,151,71)] font-semibold"
+                            : darkMode
+                            ? "hover:bg-gray-700 text-gray-200"
+                            : "hover:bg-gray-100 text-gray-600"
+                        }`}
+                      >
+                        {sub}
+                      </Link>
                     </li>
                   );
                 })}
@@ -204,31 +205,33 @@ export default function AdminMobileSidebar({ expanded, setExpanded, darkMode }) 
           {/* Wallet */}
           <li
             onClick={() => setActive("Wallet")}
-            className={`flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer transition-colors ${
-              active === "Wallet"
-                ? "bg-[rgba(213,151,71,0.15)] text-[rgb(213,151,71)] font-semibold"
-                : darkMode
+            className={`flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer transition-colors ${active === "Wallet"
+              ? "bg-[rgba(213,151,71,0.15)] text-[rgb(213,151,71)] font-semibold"
+              : darkMode
                 ? "hover:bg-gray-700 text-white"
                 : "hover:bg-gray-100 text-gray-600"
-            }`}
+              }`}
           >
             <Wallet size={20} />
-            <span>Wallet</span>
+             <Link to="/admin/wallet">
+                <span>Wallet</span>
+              </Link>
           </li>
 
           {/* Settings */}
           <li
             onClick={() => setActive("Settings")}
-            className={`flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer transition-colors ${
-              active === "Settings"
-                ? "bg-[rgba(213,151,71,0.15)] text-[rgb(213,151,71)] font-semibold"
-                : darkMode
+            className={`flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer transition-colors ${active === "Settings"
+              ? "bg-[rgba(213,151,71,0.15)] text-[rgb(213,151,71)] font-semibold"
+              : darkMode
                 ? "hover:bg-gray-700 text-white"
                 : "hover:bg-gray-100 text-gray-600"
-            }`}
+              }`}
           >
             <Settings size={20} />
-            <span>Settings</span>
+            <Link to="/admin/settings">
+                <span>Settings</span>
+              </Link>
           </li>
         </ul>
 
@@ -255,16 +258,15 @@ export default function AdminMobileSidebar({ expanded, setExpanded, darkMode }) 
               />
               {showProfileMenu && (
                 <div
-                  className={`absolute right-0 bottom-full mb-2 w-24 rounded-md shadow-lg z-50 ${
-                    darkMode ? "bg-gray-700 text-white" : "bg-white text-[rgb(213,151,71)]"
-                  }`}
+                  className={`absolute right-0 bottom-full mb-2 w-24 rounded-md shadow-lg z-50 ${darkMode ? "bg-gray-700 text-white" : "bg-white text-[rgb(213,151,71)]"
+                    }`}
                 >
-                  <button
-                    className="w-full text-left px-3 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-md"
-                    onClick={() => alert("Logging out...")}
-                  >
-                    Logout
-                  </button>
+                  <Link
+                      to="/"
+                      className="block w-full text-left px-3 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-md"
+                    >
+                      Logout
+                    </Link>
                 </div>
               )}
             </div>

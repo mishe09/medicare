@@ -66,13 +66,43 @@ export default function Navbar({ expanded, setExpanded, darkMode, setDarkMode })
                     <ShoppingBag size={20} className="text-yellow-400" />
                     <Percent size={20} className="text-red-400" />
                 </div>
+
+                <div className="flex items-center gap-5">
+                    {darkMode ? (
+                        <Sun
+                            size={20}
+                            className="cursor-pointer"
+                            color="whitesmoke" // icon color in dark mode
+                            onClick={() => setDarkMode(!darkMode)}
+                        />
+                    ) : (
+                        <Moon
+                            size={20}
+                            className="cursor-pointer"
+                            color="black" // icon color in light mode
+                            onClick={() => setDarkMode(!darkMode)}
+                        />
+                    )}
+                </div>
+                
                 {/* right icons */}
                 <div className="flex items-center gap-3">
-                    <button className="p-2 rounded-full hover:bg-gray-100">
-                        <ShoppingCart size={20} />
+                    <button
+                        className={`p-2 rounded-full transition-colors duration-300 ${darkMode
+                                ? "bg-gray-800 text-white hover:bg-gray-700"
+                                : "bg-gray-100 text-black hover:bg-gray-200"
+                            }`}
+                    >
+                        <ShoppingCart size={20} color={darkMode ? "white" : "black"} />
                     </button>
-                    <button className="p-2 rounded-full hover:bg-gray-100">
-                        <User size={20} />
+
+                    <button
+                        className={`p-2 rounded-full transition-colors duration-300 ${darkMode
+                                ? "bg-gray-800 text-white hover:bg-gray-700"
+                                : "bg-gray-100 text-black hover:bg-gray-200"
+                            }`}
+                    >
+                        <User size={20} color={darkMode ? "white" : "black"} />
                     </button>
                 </div>
             </nav>

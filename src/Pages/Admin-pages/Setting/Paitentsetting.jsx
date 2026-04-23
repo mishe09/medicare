@@ -113,9 +113,270 @@
 
 
 
+// import { User, Mail, Phone, MapPin, Lock, ChevronRight } from "lucide-react";
+
+// export default function ProfileSetting({ darkMode}) {
+//   return (
+//     <div
+//       className={`min-h-screen px-4 md:px-8 py-6 transition-colors duration-300 ${
+//         darkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-black"
+//       }`}
+//     >
+//       {/* 🔹 Top Header Section */}
+//       <div className="flex justify-between items-center mb-6">
+//         <h1 className="text-lg font-semibold">Profile Settings</h1>
+
+//         <div
+//           className={`flex items-center gap-2 text-sm ${
+//             darkMode ? "text-gray-300" : "text-gray-600"
+//           }`}
+//         >
+//           <p className="flex items-center text-[rgb(213,151,71)] gap-1">
+//             TrendX <ChevronRight size={14} />
+//           </p>
+//           <p className="flex items-center gap-1">
+//             Settings <ChevronRight size={14} />
+//           </p>
+//           <p
+//             className={`font-medium ${
+//               darkMode ? "text-gray-100" : "text-gray-700"
+//             }`}
+//           >
+//             Profile
+//           </p>
+//         </div>
+//       </div>
+
+//       {/* 🔹 Main Container */}
+//       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+//         {/* Left Box — Profile Info */}
+//         <div
+//           className={`rounded-lg shadow-md p-6 border transition-all duration-300 ${
+//             darkMode
+//               ? "bg-gray-800/80 border-gray-700/60"
+//               : "bg-white/80 border-gray-200"
+//           }`}
+//         >
+//           <div className="flex flex-col mb-6">
+//             <img
+//               src="/Home-assets/avatar-1.jpg"
+//               alt="Profile Avatar"
+//               className="w-20 h-20 rounded-full object-cover"
+//             />
+//             <h3 className="mt-3 text-md font-semibold">John Doe</h3>
+//             <p
+//               className={`text-sm ${
+//                 darkMode ? "text-gray-400" : "text-gray-500"
+//               }`}
+//             >
+//               Patient
+//             </p>
+//           </div>
+
+//           <form className="space-y-4">
+//             {/* First Name */}
+//             <div>
+//               <label className="text-sm">First Name</label>
+//               <div
+//                 className={`flex items-center border rounded-lg px-3 py-2 ${
+//                   darkMode ? "border-gray-600 bg-gray-900/40" : "border-gray-300"
+//                 }`}
+//               >
+//                 <User size={16} className="text-gray-400 mr-2" />
+//                 <input
+//                   type="text"
+//                   defaultValue="John"
+//                   placeholder="First Name"
+//                   className={`w-full outline-none text-sm bg-transparent ${
+//                     darkMode ? "text-white" : "text-black"
+//                   }`}
+//                 />
+//               </div>
+//             </div>
+
+//             {/* Last Name */}
+//             <div>
+//               <label className="text-sm">Last Name</label>
+//               <div
+//                 className={`flex items-center border rounded-lg px-3 py-2 ${
+//                   darkMode ? "border-gray-600 bg-gray-900/40" : "border-gray-300"
+//                 }`}
+//               >
+//                 <User size={16} className="text-gray-400 mr-2" />
+//                 <input
+//                   type="text"
+//                   defaultValue="Doe"
+//                   placeholder="Last Name"
+//                   className={`w-full outline-none text-sm bg-transparent ${
+//                     darkMode ? "text-white" : "text-black"
+//                   }`}
+//                 />
+//               </div>
+//             </div>
+
+//             {/* Email */}
+//             <div>
+//               <label className="text-sm">Email</label>
+//               <div
+//                 className={`flex items-center border rounded-lg px-3 py-2 ${
+//                   darkMode ? "border-gray-600 bg-gray-900/40" : "border-gray-300"
+//                 }`}
+//               >
+//                 <Mail size={16} className="text-gray-400 mr-2" />
+//                 <input
+//                   type="email"
+//                   defaultValue="john.doe@example.com"
+//                   placeholder="Email Address"
+//                   className={`w-full outline-none text-sm bg-transparent ${
+//                     darkMode ? "text-white" : "text-black"
+//                   }`}
+//                 />
+//               </div>
+//             </div>
+
+//             {/* Contact Number */}
+//             <div>
+//               <label className="text-sm">Contact Number</label>
+//               <div
+//                 className={`flex items-center border rounded-lg px-3 py-2 ${
+//                   darkMode ? "border-gray-600 bg-gray-900/40" : "border-gray-300"
+//                 }`}
+//               >
+//                 <Phone size={16} className="text-gray-400 mr-2" />
+//                 <input
+//                   type="text"
+//                   defaultValue="+234 801 234 5678"
+//                   placeholder="Contact Number"
+//                   className={`w-full outline-none text-sm bg-transparent ${
+//                     darkMode ? "text-white" : "text-black"
+//                   }`}
+//                 />
+//               </div>
+//             </div>
+
+//             {/* Address */}
+//             <div>
+//               <label className="text-sm">Address</label>
+//               <div
+//                 className={`flex items-center border rounded-lg px-3 py-2 ${
+//                   darkMode ? "border-gray-600 bg-gray-900/40" : "border-gray-300"
+//                 }`}
+//               >
+//                 <MapPin size={16} className="text-gray-400 mr-2" />
+//                 <input
+//                   type="text"
+//                   defaultValue="23 Broad Street, Lagos"
+//                   placeholder="Address"
+//                   className={`w-full outline-none text-sm bg-transparent ${
+//                     darkMode ? "text-white" : "text-black"
+//                   }`}
+//                 />
+//               </div>
+//             </div>
+
+//             {/* Save Button */}
+//             <button
+//               type="submit"
+//               className="w-full bg-[rgb(213,151,71)] text-white py-2 rounded-md hover:bg-[rgb(190,130,60)] transition"
+//             >
+//               Save Changes
+//             </button>
+//           </form>
+//         </div>
+
+//         {/* Right Box — Change Password */}
+//         <div
+//           className={`rounded-lg shadow-md p-6 border transition-all duration-300 ${
+//             darkMode
+//               ? "bg-gray-800/80 border-gray-700/60"
+//               : "bg-white/80 border-gray-200"
+//           }`}
+//         >
+//           <h2
+//             className={`text-md font-semibold mb-4 ${
+//               darkMode ? "text-gray-100" : "text-gray-700"
+//             }`}
+//           >
+//             Change Password
+//           </h2>
+
+//           <form className="space-y-4">
+//             {/* Current Password */}
+//             <div>
+//               <label className="text-sm">Current Password</label>
+//               <div
+//                 className={`flex items-center border rounded-lg px-3 py-2 ${
+//                   darkMode ? "border-gray-600 bg-gray-900/40" : "border-gray-300"
+//                 }`}
+//               >
+//                 <Lock size={16} className="text-gray-400 mr-2" />
+//                 <input
+//                   type="password"
+//                   placeholder="Enter Current Password"
+//                   className={`w-full outline-none text-sm bg-transparent ${
+//                     darkMode ? "text-white" : "text-black"
+//                   }`}
+//                 />
+//               </div>
+//             </div>
+
+//             {/* New Password */}
+//             <div>
+//               <label className="text-sm">New Password</label>
+//               <div
+//                 className={`flex items-center border rounded-lg px-3 py-2 ${
+//                   darkMode ? "border-gray-600 bg-gray-900/40" : "border-gray-300"
+//                 }`}
+//               >
+//                 <Lock size={16} className="text-gray-400 mr-2" />
+//                 <input
+//                   type="password"
+//                   placeholder="Enter New Password"
+//                   className={`w-full outline-none text-sm bg-transparent ${
+//                     darkMode ? "text-white" : "text-black"
+//                   }`}
+//                 />
+//               </div>
+//             </div>
+
+//             {/* Confirm Password */}
+//             <div>
+//               <label className="text-sm">Confirm Password</label>
+//               <div
+//                 className={`flex items-center border rounded-lg px-3 py-2 ${
+//                   darkMode ? "border-gray-600 bg-gray-900/40" : "border-gray-300"
+//                 }`}
+//               >
+//                 <Lock size={16} className="text-gray-400 mr-2" />
+//                 <input
+//                   type="password"
+//                   placeholder="Confirm Password"
+//                   className={`w-full outline-none text-sm bg-transparent ${
+//                     darkMode ? "text-white" : "text-black"
+//                   }`}
+//                 />
+//               </div>
+//             </div>
+
+//             {/* Confirm Button */}
+//             <button
+//               type="submit"
+//               className="w-full bg-[rgb(213,151,71)] text-white py-2 rounded-md hover:bg-[rgb(190,130,60)] transition"
+//             >
+//               Confirm Password
+//             </button>
+//           </form>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
 import { User, Mail, Phone, MapPin, Lock, ChevronRight } from "lucide-react";
 
-export default function ProfileSettings({ darkMode, setDarkMode }) {
+export default function ProfileSetting({ darkMode }) {
   return (
     <div
       className={`min-h-screen px-4 md:px-8 py-6 transition-colors duration-300 ${
@@ -153,8 +414,8 @@ export default function ProfileSettings({ darkMode, setDarkMode }) {
         <div
           className={`rounded-lg shadow-md p-6 border transition-all duration-300 ${
             darkMode
-              ? "bg-gray-800/80 border-gray-700/60"
-              : "bg-white/80 border-gray-200"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
           }`}
         >
           <div className="flex flex-col mb-6">
@@ -179,7 +440,7 @@ export default function ProfileSettings({ darkMode, setDarkMode }) {
               <label className="text-sm">First Name</label>
               <div
                 className={`flex items-center border rounded-lg px-3 py-2 ${
-                  darkMode ? "border-gray-600 bg-gray-900/40" : "border-gray-300"
+                  darkMode ? "border-gray-600 bg-gray-900" : "border-gray-300"
                 }`}
               >
                 <User size={16} className="text-gray-400 mr-2" />
@@ -199,7 +460,7 @@ export default function ProfileSettings({ darkMode, setDarkMode }) {
               <label className="text-sm">Last Name</label>
               <div
                 className={`flex items-center border rounded-lg px-3 py-2 ${
-                  darkMode ? "border-gray-600 bg-gray-900/40" : "border-gray-300"
+                  darkMode ? "border-gray-600 bg-gray-900" : "border-gray-300"
                 }`}
               >
                 <User size={16} className="text-gray-400 mr-2" />
@@ -219,7 +480,7 @@ export default function ProfileSettings({ darkMode, setDarkMode }) {
               <label className="text-sm">Email</label>
               <div
                 className={`flex items-center border rounded-lg px-3 py-2 ${
-                  darkMode ? "border-gray-600 bg-gray-900/40" : "border-gray-300"
+                  darkMode ? "border-gray-600 bg-gray-900" : "border-gray-300"
                 }`}
               >
                 <Mail size={16} className="text-gray-400 mr-2" />
@@ -239,7 +500,7 @@ export default function ProfileSettings({ darkMode, setDarkMode }) {
               <label className="text-sm">Contact Number</label>
               <div
                 className={`flex items-center border rounded-lg px-3 py-2 ${
-                  darkMode ? "border-gray-600 bg-gray-900/40" : "border-gray-300"
+                  darkMode ? "border-gray-600 bg-gray-900" : "border-gray-300"
                 }`}
               >
                 <Phone size={16} className="text-gray-400 mr-2" />
@@ -259,7 +520,7 @@ export default function ProfileSettings({ darkMode, setDarkMode }) {
               <label className="text-sm">Address</label>
               <div
                 className={`flex items-center border rounded-lg px-3 py-2 ${
-                  darkMode ? "border-gray-600 bg-gray-900/40" : "border-gray-300"
+                  darkMode ? "border-gray-600 bg-gray-900" : "border-gray-300"
                 }`}
               >
                 <MapPin size={16} className="text-gray-400 mr-2" />
@@ -288,8 +549,8 @@ export default function ProfileSettings({ darkMode, setDarkMode }) {
         <div
           className={`rounded-lg shadow-md p-6 border transition-all duration-300 ${
             darkMode
-              ? "bg-gray-800/80 border-gray-700/60"
-              : "bg-white/80 border-gray-200"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
           }`}
         >
           <h2
@@ -306,7 +567,7 @@ export default function ProfileSettings({ darkMode, setDarkMode }) {
               <label className="text-sm">Current Password</label>
               <div
                 className={`flex items-center border rounded-lg px-3 py-2 ${
-                  darkMode ? "border-gray-600 bg-gray-900/40" : "border-gray-300"
+                  darkMode ? "border-gray-600 bg-gray-900" : "border-gray-300"
                 }`}
               >
                 <Lock size={16} className="text-gray-400 mr-2" />
@@ -325,7 +586,7 @@ export default function ProfileSettings({ darkMode, setDarkMode }) {
               <label className="text-sm">New Password</label>
               <div
                 className={`flex items-center border rounded-lg px-3 py-2 ${
-                  darkMode ? "border-gray-600 bg-gray-900/40" : "border-gray-300"
+                  darkMode ? "border-gray-600 bg-gray-900" : "border-gray-300"
                 }`}
               >
                 <Lock size={16} className="text-gray-400 mr-2" />
@@ -344,7 +605,7 @@ export default function ProfileSettings({ darkMode, setDarkMode }) {
               <label className="text-sm">Confirm Password</label>
               <div
                 className={`flex items-center border rounded-lg px-3 py-2 ${
-                  darkMode ? "border-gray-600 bg-gray-900/40" : "border-gray-300"
+                  darkMode ? "border-gray-600 bg-gray-900" : "border-gray-300"
                 }`}
               >
                 <Lock size={16} className="text-gray-400 mr-2" />

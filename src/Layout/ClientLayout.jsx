@@ -27,7 +27,11 @@ export default function ClientLayout({
 
       {/* 📱 Mobile Sidebar */}
       <div className="sm:hidden">
-        <MobileSidebar expanded={expanded} setExpanded={setExpanded} />
+        <MobileSidebar 
+        expanded={expanded} 
+        setExpanded={setExpanded}  
+        setDarkMode={setDarkMode}
+         />
       </div>
 
       {/* 🌐 Main Content */}

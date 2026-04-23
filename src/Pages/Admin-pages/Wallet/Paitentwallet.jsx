@@ -113,11 +113,9 @@
 // export default Paitentwallet;
 
 
-import React, { useState } from "react";
-import { ArrowUp, ArrowDown, Moon, Sun } from "lucide-react";
+import { ArrowUp, ArrowDown, ChevronRight } from "lucide-react";
 
-const Paitentwallet = () => {
-  const [darkMode, setDarkMode] = useState(false);
+const Paitentwallet = ({ darkMode }) => {
 
   const users = [
     { name: "Dr. James Stone", type: "Consultation", date: "2025-10-01", status: "Completed", avatar: "https://randomuser.me/api/portraits/men/32.jpg" },
@@ -139,132 +137,139 @@ const Paitentwallet = () => {
   };
 
   return (
-    <div
-      className={`min-h-screen flex flex-col md:flex-row gap-6 p-6 transition-colors duration-300`}
-    >
-      {/* 🔘 Toggle Button */}
-      <div className="absolute top-4 right-6">
-        <button
-          onClick={() => setDarkMode(!darkMode)}
-          className="p-2 rounded-full border transition-all duration-300 hover:bg-gray-200 dark:hover:bg-gray-800"
-        >
-          {darkMode ? (
-            <Sun className="w-5 h-5 text-yellow-400" />
-          ) : (
-            <Moon className="w-5 h-5 text-gray-700" />
-          )}
-        </button>
-      </div>
 
-      {/* 📋 TABLE SECTION */}
-      <div
-        className={`rounded-2xl shadow-md p-6 w-full md:w-3/4 overflow-x-auto transition-colors duration-300 ${
-          darkMode ? "bg-gray-800 border border-gray-700" : "bg-white border border-gray-200"
-        }`}
-      >
-        <h2 className="text-2xl font-semibold mb-4">Appointments</h2>
+    <>
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-lg font-semibold">Wallet</h1>
 
-        <table
-          className={`w-full border-collapse rounded-xl overflow-hidden ${
-            darkMode ? "border border-gray-700" : "border border-gray-200"
-          }`}
-        >
-          <thead
-            className={`${
-              darkMode
-                ? "bg-[rgba(213,151,71,0.15)] text-gray-200"
-                : "bg-[rgba(213,151,71,0.2)] text-gray-800"
+        <div
+          className={`flex items-center gap-2 text-sm ${darkMode ? "text-gray-300" : "text-gray-600"
             }`}
+        >
+          <p className="flex items-center text-[rgb(213,151,71)] gap-1">
+            TrendX <ChevronRight size={14} />
+          </p>
+          <p className="flex items-center gap-1">
+            Admin <ChevronRight size={14} />
+          </p>
+          <p
+            className={`font-medium ${darkMode ? "text-gray-200" : "text-gray-700"
+              }`}
           >
-            <tr>
-              <th className="text-left py-3 px-4 border-r border-gray-500">Name</th>
-              <th className="text-left py-3 px-4 border-r border-gray-500">Type</th>
-              <th className="text-left py-3 px-4 border-r border-gray-500">Date</th>
-              <th className="text-left py-3 px-4">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user, idx) => (
-              <tr
-                key={idx}
-                className={`border-t transition-colors duration-300 ${
-                  darkMode
-                    ? "border-gray-700 hover:bg-gray-700"
-                    : "border-gray-200 hover:bg-gray-50"
+            Wallet
+          </p>
+        </div>
+      </div>
+
+
+      <div
+        className={`min-h-screen flex flex-col md:flex-row gap-6 p-6 transition-colors duration-300`}
+      >
+
+        {/* 📋 TABLE SECTION */}
+        <div
+          className={`rounded-2xl shadow-md p-6 w-full md:w-3/4 overflow-x-auto transition-colors duration-300 ${darkMode ? "bg-gray-800 border border-gray-700" : "bg-white border border-gray-200"
+            }`}
+        >
+          <h2 className="text-2xl font-semibold mb-4">Appointments</h2>
+
+          <table
+            className={`w-full border-collapse rounded-xl overflow-hidden ${darkMode ? "border border-gray-700" : "border border-gray-200"
+              }`}
+          >
+            <thead
+              className={`${darkMode
+                  ? "bg-[rgba(213,151,71,0.15)] text-gray-200"
+                  : "bg-[rgba(213,151,71,0.2)] text-gray-800"
                 }`}
-              >
-                <td className="py-3 px-4 flex items-center gap-3 border-r border-gray-600">
-                  <img
-                    src={user.avatar}
-                    alt={user.name}
-                    className="w-9 h-9 rounded-full object-cover border border-gray-500"
-                  />
-                  <span>{user.name}</span>
-                </td>
-                <td className="py-3 px-4 border-r border-gray-600">{user.type}</td>
-                <td className="py-3 px-4 border-r border-gray-600">{user.date}</td>
-                <td className="py-3 px-4">
-                  <span
-                    className={`px-3 py-1 rounded-full text-xs font-medium ${statusColors[user.status]}`}
-                  >
-                    {user.status}
-                  </span>
-                </td>
+            >
+              <tr>
+                <th className="text-left py-3 px-4 border-r border-gray-500">Name</th>
+                <th className="text-left py-3 px-4 border-r border-gray-500">Type</th>
+                <th className="text-left py-3 px-4 border-r border-gray-500">Date</th>
+                <th className="text-left py-3 px-4">Status</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {users.map((user, idx) => (
+                <tr
+                  key={idx}
+                  className={`border-t transition-colors duration-300 ${darkMode
+                      ? "border-gray-700 hover:bg-gray-700"
+                      : "border-gray-200 hover:bg-gray-50"
+                    }`}
+                >
+                  <td className="py-3 px-4 flex items-center gap-3 border-r border-gray-600">
+                    <img
+                      src={user.avatar}
+                      alt={user.name}
+                      className="w-9 h-9 rounded-full object-cover border border-gray-500"
+                    />
+                    <span>{user.name}</span>
+                  </td>
+                  <td className="py-3 px-4 border-r border-gray-600">{user.type}</td>
+                  <td className="py-3 px-4 border-r border-gray-600">{user.date}</td>
+                  <td className="py-3 px-4">
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-medium ${statusColors[user.status]}`}
+                    >
+                      {user.status}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* 💳 RIGHT SIDEBAR CARDS */}
+        <div className="flex flex-col gap-5 w-full md:w-1/4">
+          {/* 🟥 Current Balance Card */}
+          <div className="bg-red-500 text-white rounded-2xl shadow-md p-5 relative overflow-hidden">
+            <div className="absolute inset-0 bg-red-400 opacity-40 rounded-2xl"></div>
+            <div className="relative z-10">
+              <p className="text-sm opacity-90">Current Balance</p>
+              <h2 className="text-2xl font-bold mt-1">$78,000</h2>
+              <p className="text-xs mt-3 opacity-90">Card No: 9874 2345 9012 4567</p>
+            </div>
+          </div>
+
+          {/* 💵 Earning Card */}
+          <div
+            className={`rounded-2xl shadow-sm p-5 flex flex-col justify-between border transition-colors duration-300 ${darkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"
+              }`}
+          >
+            <div className="flex justify-between items-center">
+              <div>
+                <p className="text-sm opacity-80">Earning</p>
+                <h2 className="text-xl font-semibold">$54,912</h2>
+              </div>
+              <div className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 text-blue-600">
+                <ArrowUp size={18} />
+              </div>
+            </div>
+            <p className="text-blue-500 font-medium text-sm mt-2">+23%</p>
+          </div>
+
+          {/* 📉 Selling Card */}
+          <div
+            className={`rounded-2xl shadow-sm p-5 flex flex-col justify-between border transition-colors duration-300 ${darkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"
+              }`}
+          >
+            <div className="flex justify-between items-center">
+              <div>
+                <p className="text-sm opacity-80">Selling</p>
+                <h2 className="text-xl font-semibold">$12,312</h2>
+              </div>
+              <div className="flex items-center justify-center w-8 h-8 rounded-full bg-red-100 text-red-600">
+                <ArrowDown size={18} />
+              </div>
+            </div>
+            <p className="text-red-500 font-medium text-sm mt-2">-12%</p>
+          </div>
+        </div>
       </div>
-
-      {/* 💳 RIGHT SIDEBAR CARDS */}
-      <div className="flex flex-col gap-5 w-full md:w-1/4">
-        {/* 🟥 Current Balance Card */}
-        <div className="bg-red-500 text-white rounded-2xl shadow-md p-5 relative overflow-hidden">
-          <div className="absolute inset-0 bg-red-400 opacity-40 rounded-2xl"></div>
-          <div className="relative z-10">
-            <p className="text-sm opacity-90">Current Balance</p>
-            <h2 className="text-2xl font-bold mt-1">$78,000</h2>
-            <p className="text-xs mt-3 opacity-90">Card No: 9874 2345 9012 4567</p>
-          </div>
-        </div>
-
-        {/* 💵 Earning Card */}
-        <div
-          className={`rounded-2xl shadow-sm p-5 flex flex-col justify-between border transition-colors duration-300 ${
-            darkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"
-          }`}
-        >
-          <div className="flex justify-between items-center">
-            <div>
-              <p className="text-sm opacity-80">Earning</p>
-              <h2 className="text-xl font-semibold">$54,912</h2>
-            </div>
-            <div className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 text-blue-600">
-              <ArrowUp size={18} />
-            </div>
-          </div>
-          <p className="text-blue-500 font-medium text-sm mt-2">+23%</p>
-        </div>
-
-        {/* 📉 Selling Card */}
-        <div
-          className={`rounded-2xl shadow-sm p-5 flex flex-col justify-between border transition-colors duration-300 ${
-            darkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"
-          }`}
-        >
-          <div className="flex justify-between items-center">
-            <div>
-              <p className="text-sm opacity-80">Selling</p>
-              <h2 className="text-xl font-semibold">$12,312</h2>
-            </div>
-            <div className="flex items-center justify-center w-8 h-8 rounded-full bg-red-100 text-red-600">
-              <ArrowDown size={18} />
-            </div>
-          </div>
-          <p className="text-red-500 font-medium text-sm mt-2">-12%</p>
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 
